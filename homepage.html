@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Math WebsiteHome</title>
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Avenir+Light&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alata&display=swap" rel="stylesheet">
+    <style>
+
+        .boxed-images {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 200px;
+            z-index: 1;
+        }
+
+        .boxed-images.left {
+            left: 0;
+            background-image: url('https://via.placeholder.com/50x1000');
+            background-size: cover;
+        }
+
+        .boxed-images.right {
+            right: 0;
+            background-image: url('https://via.placeholder.com/50x1000');
+            background-size: cover;
+        }
+
+        .history-section {
+            background-color: #FFF2D8;
+            height: 380px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 0 50px;
+        }
+
+        .history-section h1 {
+            font-size: 31px;
+            margin-bottom: 34px;
+        }
+
+        .history-section p {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .history-button {
+            background-color: #2E8A5F;
+            color: white;
+            font-size: 16px;
+            width: 212px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: opacity 0.3s;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            height: 100vh;
+            font-family: 'Questrial', sans-serif;
+        }
+
+        .full-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 66px;
+            background-color: #B9DBCB;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            z-index: 9999;
+            padding-left: 16px;
+            box-sizing: border-box;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+        }
+
+
+
+        .title {
+            font-size: 28px;
+            margin-right: 8px;
+            color: #126656;
+        }
+
+        .subtitle {
+            font-size: 10px;
+            color: #126656;
+        }
+
+        .button-container {
+            display: flex;
+            position: absolute;
+            right: 1cm;
+            gap: 0.25cm;
+        }
+
+        .button-container a {
+            background-color: #B9DBCB;
+            color: #126656;
+            border: none;
+            width: 124px;
+            height: 46px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, opacity 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Questrial', sans-serif;
+            font-weight: 200;
+        }
+
+        .button-container a:hover {
+            background-color: #4E836A;
+            color: white;
+        }
+
+        .button-container a:nth-child(4) {
+            background-color: #4E836A;
+            color: white;
+        }
+
+        .button-container a:nth-child(4):hover {
+            opacity: 0.6;
+        }
+
+        .alert-bar {
+            background-color: white;
+            color: black;
+            font-family: 'Avenir Light', sans-serif;
+            font-size: 18px;
+            text-align: center;
+            padding: 15px;
+            width: 100%;
+            position: relative;
+            margin-top: 66px;
+            box-sizing: border-box;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+
+        .popup-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+            font-family: 'Alata', sans-serif;
+        }
+
+        .popup-button {
+            background-color: #126656;
+            color: white;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .popup-button:hover {
+            background-color: #4E836A;
+        }
+
+        .welcome-section {
+            background-color: #FAF4E6;
+            width: 100%;
+            padding: 16px 20px;
+            box-sizing: border-box;
+            text-align: center;
+            color: black;
+        }
+
+        .welcome-section h1 {
+            margin: 0;
+        }
+
+        .welcome-button {
+            background-color: #B9DBCB;
+            color: #000000;
+            font-size: 16px;
+            width: 191px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 8px auto;
+        }
+
+        .welcome-button:hover {
+            background-color: #126656;
+            color: white;
+        }
+
+        .gradient-section {
+            width: 100%;
+            margin-bottom: 0;
+            padding: 0;
+        }
+
+        .gradient-section div {
+            height: 5px;
+            width: 100%;
+        }
+
+        .color-1 {
+            background-color: #FAF4E8;
+        }
+
+        .color-2 {
+            background-color: rgba(78, 131, 106, 0.2);
+        }
+
+        .color-3 {
+            background-color: rgba(78, 131, 106, 0.4);
+        }
+
+        .color-4 {
+            background-color: rgba(78, 131, 106, 0.6);
+        }
+
+        .color-5 {
+            background-color: rgba(78, 131, 106, 0.8);
+        }
+
+        .color-6 {
+            background-color: rgba(78, 131, 106, 1);
+        }
+
+        .image-text-container {
+            display: flex;
+            align-items: flex-start;
+            margin-top: 0;
+            padding: 1cm;
+            background-color: #B9DBCB;
+        }
+
+        .image-text-container img {
+            width: 300px;
+            height: 300px;
+            margin-right: 1cm;
+            object-fit: cover;
+        }
+
+        .text-content {
+            max-width: 600px;
+            color: black;
+        }
+
+        .text-content h2 {
+            font-size: 31px;
+            margin-bottom: 24px;
+        }
+
+        .text-content p {
+            font-size: 24px;
+            margin-bottom: 24px;
+        }
+
+        .start-button {
+            background-color: #2E8A5F;
+            color: white;
+            font-size: 14px;
+            width: 212px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 19px;
+            font-family: 'Questrial', sans-serif;
+            font-weight: 200;
+            transition: opacity 0.3s;
+        }
+
+        .start-button:hover {
+            opacity: 0.9;
+        }
+
+        .history-section {
+            background-color: #FFF2D8;
+            height: 380px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .history-section h1 {
+            font-size: 31px;
+            margin-bottom: 34px;
+        }
+
+        .history-section p {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .history-button {
+            background-color: #2E8A5F;
+            color: white;
+            font-size: 16px;
+            width: 212px;
+            height: 46px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: opacity 0.3s;
+        }
+
+        .boxed-images img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .choose-us-section {
+            background-color: #EEEEEE;
+            padding: 20px;
+            max-width: 100%;
+            height: 460px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        .choose-us-section h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .item h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .item p {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .scroll-line {
+            position: fixed;
+            top: 66px;
+            left: 0;
+            width: 100%;
+            height: 2.5px;
+            background-color: rgba(46, 138, 95, 0.5);
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+            z-index: 9998;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div class="full-layer">
+        <div class="content">
+            <div class="title">The Math Website</div>
+            <div class="subtitle">
+                <!-- You've found this: I have no idea how to fix this 🗿 -->
+            </div>
+        </div>
+        <div class="button-container">
+            <a href="#" class="button"><b>About Us</b></a>
+            <a href="#" class="button"><b>Products</b></a>
+            <a href="#" class="button"><b>Our Projects</b></a>
+            <a href="#" class="button"><b>Mathify</b></a>
+        </div>
+    </div>
+
+    <div class="alert-bar">
+        Remember to read the Terms & Service below this page!<a href="" target="_blank"></a>
+    </div>
+
+    <div class="scroll-line" id="scrollLine"></div>
+
+
+    <div class="welcome-section" style="display: flex; flex-direction: column; justify-content: space-between; align-items: center; height: 300px;">
+        <div>
+            <h1 style="font-size: 20px;">Welcome to</h1>
+            <h1 style="font-size: 45px;">The Math Website!</h1>
+            <div style="height: 8px;"></div>
+            <p style="font-size: 22px; text-align: center;">The place where you can explore the endless<br>possibilities of math with no limit.<br>This is a free Math Website! : )</p>
+            <div style="height: 8px;"></div>
+            <a href="#" class="welcome-button">Find out more!</a>
+        </div>
+            <p style="font-size: 15px; margin-top: auto;">Hope you enjoy :)</p>
+    </div>
+
+    <div class="gradient-section">
+        <div class="color-1"></div>
+        <div class="color-2"></div>
+        <div class="color-3"></div>
+        <div class="color-4"></div>
+        <div class="color-5"></div>
+        <div class="color-6"></div>
+    </div>
+
+    <div class="image-text-container">
+        <img src="https://static.wikia.nocookie.net/dqw4w9wgxcq/images/6/61/Rickrolling.gif/revision/latest?cb=20220719030942" alt="Just a stupid idea :D">
+        <div class="text-content">
+            <h2>Unlocking Your Math Potential!</h2>
+            <p>Boundless learning forever, no cost.<br>Starting from the basics to the most advanced topics.</p>
+            <p>Soon you realise goals effortlessly being completed.<br>By our unwavering support, guiding you every step of the way!</p>
+            <a href="#" class="start-button">Start Learning Now!</a>
+        </div>
+    </div>
+
+    <div class="history-section">
+<!--        <div class="boxed-images left"><p></p></div>-->
+<!--        <div class="boxed-images right"><p></p></div>-->
+        <h1>The Changing Cycles of Mathematics</h1>
+        <p>Finding historic insights are challenging, especially math...</p>
+        <p>From sourcing your information from Google to Britannica, it ain't no easy</p>
+        <p>Now, you'll find it right at your fingertips, clicks away...</p>
+        <p>Never before, you will find the effortless improvements of math!)</p>
+        <a href="#" class="history-button">Interested for history?</a>
+    </div>
+
+
+    <div class="footer" style="background-color: white; height: 174px; text-align: center; font-family: 'Avenir Light', sans-serif; font-size: 14px; color: black; display: flex; flex-direction: column; justify-content: space-between; padding: 0 20px;">
+        <div style="line-height: 1.6;">
+            <p style="margin: 0;">© 2025 The Math Website. All rights reserved.</p>
+            <p style="margin: 0;">Made with love by The Math Website Team! :D</p>
+            <p></p>
+            <p style="margin: 0;">Current Version: DevVersion v1.0.1</p>
+            <p style="margin: 0;">Release Date: 10/01/2024</p>
+            <p></p>
+            <a href="#" style="font-weight: bold; text-decoration: none; color: black;"> Terms & Service </a> | 
+            <a href="#" style="font-weight: bold; text-decoration: none; color: black;"> ??? </a> | 
+            <a href="#" style="font-weight: bold; text-decoration: none; color: black;"> Refund Policy </a>
+            <p style="margin: 0;"></p>
+        </div>
+    </div>
+
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <h2>A Minor Notice</h2>
+            <p id="popup-message">Please keep your window at maximum size.</p>
+            <button class="popup-button" id="close-popup">Got it!</button>
+        </div>
+    </div>
+
+    <script>
+        const isIphone = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+        const popup = document.getElementById("popup");
+        const popupMessage = document.getElementById("popup-message");
+        const closeButton = document.getElementById("close-popup");
+
+        if (isIphone) {
+            popupMessage.textContent = "Your device may not be the best for The Math Website. Please use a computer or a tablet!";
+        } else {
+            popupMessage.textContent = "Please keep your window at maximum size for best experience on The Math Website!";
+        }
+
+        window.onload = () => {
+            popup.style.display = "flex";
+        };
+
+        closeButton.addEventListener("click", () => {
+            popup.style.display = "none";
+        });
+    </script>
+
+    <script>
+        const scrollLine = document.getElementById("scrollLine");
+        const alertBarHeight = document.querySelector(".alert-bar").offsetHeight;
+
+        function checkScrollPosition() {
+            if (window.scrollY > alertBarHeight) {
+                scrollLine.style.opacity = 1;
+            } else {
+                scrollLine.style.opacity = 0;
+            }
+        }
+
+        window.addEventListener("scroll", checkScrollPosition);
+
+        checkScrollPosition();
+    </script>
+
+</body>
+</html>
